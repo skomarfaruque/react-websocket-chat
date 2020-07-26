@@ -47,6 +47,10 @@ class Registration extends React.Component {
     this.setState({ email: e.target.value });
     console.log(this.state);
   };
+  bindName = (e) => {
+    this.setState({ name: e.target.value });
+    console.log(this.state);
+  };
 
   bindPassword = (e) => {
     this.setState({ password: e.target.value });
@@ -64,9 +68,9 @@ class Registration extends React.Component {
             <Input
               type="text"
               name="name"
-              id="exampleEmail"
+              id="exampleName"
               placeholder="with a placeholder"
-              onChange={(val) => this.bindEmail(val)}
+              onChange={(val) => this.bindName(val)}
             />
           </Col>
         </FormGroup>

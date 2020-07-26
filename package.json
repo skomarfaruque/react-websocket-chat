@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.5",
     "@fortawesome/react-fontawesome": "^0.0.18",
