@@ -94,46 +94,46 @@ class Chat extends React.Component {
 
   render() {
     return (
-      <div class="container">
-        <h3 class=" text-center">
+      <div className="container">
+        <h3 className=" text-center">
           Messaging with {this.props.match.params.name}
         </h3>
-        <div class="messaging">
-          <div class="inbox_msg">
-            {/* <div class="inbox_people">
-              <div class="headind_srch">
-                <div class="recent_heading">
+        <div className="messaging">
+          <div className="inbox_msg">
+            {/* <div className="inbox_people">
+              <div className="headind_srch">
+                <div className="recent_heading">
                   <h4>Recent</h4>
                 </div>
-                <div class="srch_bar">
-                  <div class="stylish-input-group">
+                <div className="srch_bar">
+                  <div className="stylish-input-group">
                     <input
                       type="text"
-                      class="search-bar"
+                      className="search-bar"
                       placeholder="Search"
                     />
-                    <span class="input-group-addon">
+                    <span className="input-group-addon">
                       <button type="button">
                         {" "}
-                        <i class="fa fa-search" aria-hidden="true"></i>{" "}
+                        <i className="fa fa-search" aria-hidden="true"></i>{" "}
                       </button>
                     </span>
                   </div>
                 </div>
               </div>
-              <div class="inbox_chat">
-                <div class="chat_list active_chat">
-                  <div class="chat_people">
-                    <div class="chat_img">
+              <div className="inbox_chat">
+                <div className="chat_list active_chat">
+                  <div className="chat_people">
+                    <div className="chat_img">
                       {" "}
                       <img
                         src="https://ptetutorials.com/images/user-profile.png"
                         alt="sunil"
                       />{" "}
                     </div>
-                    <div class="chat_ib">
+                    <div className="chat_ib">
                       <h5>
-                        Sunil Rajput <span class="chat_date">Dec 25</span>
+                        Sunil Rajput <span className="chat_date">Dec 25</span>
                       </h5>
                       <p>
                         Test, which is a new approach to have all solutions
@@ -142,18 +142,18 @@ class Chat extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div class="chat_list">
-                  <div class="chat_people">
-                    <div class="chat_img">
+                <div className="chat_list">
+                  <div className="chat_people">
+                    <div className="chat_img">
                       {" "}
                       <img
                         src="https://ptetutorials.com/images/user-profile.png"
                         alt="sunil"
                       />{" "}
                     </div>
-                    <div class="chat_ib">
+                    <div className="chat_ib">
                       <h5>
-                        Sunil Rajput <span class="chat_date">Dec 25</span>
+                        Sunil Rajput <span className="chat_date">Dec 25</span>
                       </h5>
                       <p>
                         Test, which is a new approach to have all solutions
@@ -162,18 +162,18 @@ class Chat extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div class="chat_list">
-                  <div class="chat_people">
-                    <div class="chat_img">
+                <div className="chat_list">
+                  <div className="chat_people">
+                    <div className="chat_img">
                       {" "}
                       <img
                         src="https://ptetutorials.com/images/user-profile.png"
                         alt="sunil"
                       />{" "}
                     </div>
-                    <div class="chat_ib">
+                    <div className="chat_ib">
                       <h5>
-                        Sunil Rajput <span class="chat_date">Dec 25</span>
+                        Sunil Rajput <span className="chat_date">Dec 25</span>
                       </h5>
                       <p>
                         Test, which is a new approach to have all solutions
@@ -182,18 +182,18 @@ class Chat extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div class="chat_list">
-                  <div class="chat_people">
-                    <div class="chat_img">
+                <div className="chat_list">
+                  <div className="chat_people">
+                    <div className="chat_img">
                       {" "}
                       <img
                         src="https://ptetutorials.com/images/user-profile.png"
                         alt="sunil"
                       />{" "}
                     </div>
-                    <div class="chat_ib">
+                    <div className="chat_ib">
                       <h5>
-                        Sunil Rajput <span class="chat_date">Dec 25</span>
+                        Sunil Rajput <span className="chat_date">Dec 25</span>
                       </h5>
                       <p>
                         Test, which is a new approach to have all solutions
@@ -202,18 +202,18 @@ class Chat extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div class="chat_list">
-                  <div class="chat_people">
-                    <div class="chat_img">
+                <div className="chat_list">
+                  <div className="chat_people">
+                    <div className="chat_img">
                       {" "}
                       <img
                         src="https://ptetutorials.com/images/user-profile.png"
                         alt="sunil"
                       />{" "}
                     </div>
-                    <div class="chat_ib">
+                    <div className="chat_ib">
                       <h5>
-                        Sunil Rajput <span class="chat_date">Dec 25</span>
+                        Sunil Rajput <span className="chat_date">Dec 25</span>
                       </h5>
                       <p>
                         Test, which is a new approach to have all solutions
@@ -222,18 +222,18 @@ class Chat extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div class="chat_list">
-                  <div class="chat_people">
-                    <div class="chat_img">
+                <div className="chat_list">
+                  <div className="chat_people">
+                    <div className="chat_img">
                       {" "}
                       <img
                         src="https://ptetutorials.com/images/user-profile.png"
                         alt="sunil"
                       />{" "}
                     </div>
-                    <div class="chat_ib">
+                    <div className="chat_ib">
                       <h5>
-                        Sunil Rajput <span class="chat_date">Dec 25</span>
+                        Sunil Rajput <span className="chat_date">Dec 25</span>
                       </h5>
                       <p>
                         Test, which is a new approach to have all solutions
@@ -242,18 +242,18 @@ class Chat extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div class="chat_list">
-                  <div class="chat_people">
-                    <div class="chat_img">
+                <div className="chat_list">
+                  <div className="chat_people">
+                    <div className="chat_img">
                       {" "}
                       <img
                         src="https://ptetutorials.com/images/user-profile.png"
                         alt="sunil"
                       />{" "}
                     </div>
-                    <div class="chat_ib">
+                    <div className="chat_ib">
                       <h5>
-                        Sunil Rajput <span class="chat_date">Dec 25</span>
+                        Sunil Rajput <span className="chat_date">Dec 25</span>
                       </h5>
                       <p>
                         Test, which is a new approach to have all solutions
@@ -264,52 +264,52 @@ class Chat extends React.Component {
                 </div>
               </div>
             </div> */}
-            <div class="mesgs">
-              <div class="msg_history">
+            <div className="mesgs">
+              <div className="msg_history">
                 {this.state.messages.map((message) => {
                   return (
                     <span>
-                      <div class="incoming_msg">
-                        <div class="incoming_msg_img">
+                      <div className="incoming_msg">
+                        <div className="incoming_msg_img">
                           {" "}
                           <img
                             src="https://ptetutorials.com/images/user-profile.png"
                             alt="sunil"
                           />{" "}
                         </div>
-                        <div class="received_msg">
-                          <div class="received_withd_msg">
+                        <div className="received_msg">
+                          <div className="received_withd_msg">
                             <p>{message}</p>
-                            {/* <span class="time_date"> 11:01 AM | June 9</span> */}
+                            {/* <span className="time_date"> 11:01 AM | June 9</span> */}
                           </div>
                         </div>
                       </div>
-                      {/* <div class="outgoing_msg">
-                        <div class="sent_msg">
+                      {/* <div className="outgoing_msg">
+                        <div className="sent_msg">
                           <p>
                             Test which is a new approach to have all solutions
                           </p>
-                          <span class="time_date"> 11:01 AM | June 9</span>{" "}
+                          <span className="time_date"> 11:01 AM | June 9</span>{" "}
                         </div>
                       </div> */}
                     </span>
                   );
                 })}
               </div>
-              <div class="type_msg">
-                <div class="input_msg_write">
+              <div className="type_msg">
+                <div className="input_msg_write">
                   <input
                     type="text"
-                    class="write_msg"
+                    className="write_msg"
                     placeholder="Type a message"
                     onChange={(e) => this.setMsg(e)}
                   />
                   <button
-                    class="msg_send_btn"
+                    className="msg_send_btn"
                     type="button"
                     onClick={() => this.sendMsg()}
                   >
-                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                    <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
