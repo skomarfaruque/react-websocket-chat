@@ -12,31 +12,29 @@ import {
   FormText,
 } from "reactstrap";
 const axios = require("axios");
-class Login extends React.Component {
+class Registration extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
       email: "",
       password: "",
     };
   }
   componentWillMount() {
-    document.title = "Login";
+    document.title = "Registration";
   }
 
   login = async () => {
     const { data } = await axios({
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}users/login`,
+      url: `${process.env.REACT_APP_API_URL}users`,
       data: this.state,
     });
     console.log(data.data._id);
     this.props.login({ token: data.data._id });
-    this.props.history.push("/home");
+    this.props.history.push("/");
     console.log(data);
-  };
-  registration = () => {
-    this.props.history.push("/registration");
   };
 
   handleReset(e) {
@@ -58,6 +56,20 @@ class Login extends React.Component {
   render() {
     return (
       <Form>
+        <FormGroup row>
+          <Label for="exampleEmail" sm={2}>
+            name
+          </Label>
+          <Col sm={10}>
+            <Input
+              type="text"
+              name="name"
+              id="exampleEmail"
+              placeholder="with a placeholder"
+              onChange={(val) => this.bindEmail(val)}
+            />
+          </Col>
+        </FormGroup>
         <FormGroup row>
           <Label for="exampleEmail" sm={2}>
             Email
@@ -89,8 +101,7 @@ class Login extends React.Component {
 
         <FormGroup check row>
           <Col sm={{ size: 10, offset: 2 }}>
-            <Button onClick={() => this.login()}>Login</Button>
-            <Button onClick={() => this.registration()}>Registration</Button>
+            <Button onClick={() => this.login()}>Registration</Button>
           </Col>
         </FormGroup>
       </Form>
@@ -105,5 +116,5 @@ const mapDispatchToProps = (dispatch) => ({
   login: (token) => dispatch({ type: "Store", token }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
 // export default Login

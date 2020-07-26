@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Login from "./components/Login";
+import Registration from "./components/Registration";
 import Home from "./components/Home";
 import Chat from "./components/Chat";
 
@@ -17,8 +18,19 @@ render(
       <Router>
         <div>
           <Route exact path="/" name="Login" component={Login}></Route>
+          <Route
+            exact
+            path="/Registration"
+            name="Registration"
+            component={Registration}
+          ></Route>
           <Route exact path="/Home" name="Home" component={Home}></Route>
-          <Route exact path="/Chat/:id" name="Chat" component={Chat}></Route>
+          <Route
+            exact
+            path="/Chat/:id/:name"
+            name="Chat"
+            component={Chat}
+          ></Route>
 
           <Route exact path="/logout" name="type" component={Logout}></Route>
         </div>

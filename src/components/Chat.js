@@ -7,12 +7,12 @@ import "../style.css";
 const axios = require("axios");
 
 class Chat extends React.Component {
-  ws = new WebSocket("ws://localhost:5000/chat/");
+  ws = new WebSocket(process.env.REACT_APP_WS_URL);
   constructor(props) {
     super(props);
     this.state = {
       users: [],
-      message: "",
+      messages: [],
     };
   }
   componentWillMount() {
@@ -33,6 +33,9 @@ class Chat extends React.Component {
     };
 
     this.ws.onmessage = (evt) => {
+      const rawMessages = [...this.state.messages];
+      rawMessages.push(evt.data);
+      this.setState({ messages: rawMessages });
       console.log("received message", evt.data);
     };
     console.log("logged", this.props.token);
@@ -92,10 +95,12 @@ class Chat extends React.Component {
   render() {
     return (
       <div class="container">
-        <h3 class=" text-center">Messaging</h3>
+        <h3 class=" text-center">
+          Messaging with {this.props.match.params.name}
+        </h3>
         <div class="messaging">
           <div class="inbox_msg">
-            <div class="inbox_people">
+            {/* <div class="inbox_people">
               <div class="headind_srch">
                 <div class="recent_heading">
                   <h4>Recent</h4>
@@ -258,70 +263,38 @@ class Chat extends React.Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div class="mesgs">
               <div class="msg_history">
-                <div class="incoming_msg">
-                  <div class="incoming_msg_img">
-                    {" "}
-                    <img
-                      src="https://ptetutorials.com/images/user-profile.png"
-                      alt="sunil"
-                    />{" "}
-                  </div>
-                  <div class="received_msg">
-                    <div class="received_withd_msg">
-                      <p>Test which is a new approach to have all solutions</p>
-                      <span class="time_date"> 11:01 AM | June 9</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="outgoing_msg">
-                  <div class="sent_msg">
-                    <p>Test which is a new approach to have all solutions</p>
-                    <span class="time_date"> 11:01 AM | June 9</span>{" "}
-                  </div>
-                </div>
-                <div class="incoming_msg">
-                  <div class="incoming_msg_img">
-                    {" "}
-                    <img
-                      src="https://ptetutorials.com/images/user-profile.png"
-                      alt="sunil"
-                    />{" "}
-                  </div>
-                  <div class="received_msg">
-                    <div class="received_withd_msg">
-                      <p>Test, which is a new approach to have</p>
-                      <span class="time_date"> 11:01 AM | Yesterday</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="outgoing_msg">
-                  <div class="sent_msg">
-                    <p>Apollo University, Delhi, India Test</p>
-                    <span class="time_date"> 11:01 AM | Today</span>{" "}
-                  </div>
-                </div>
-                <div class="incoming_msg">
-                  <div class="incoming_msg_img">
-                    {" "}
-                    <img
-                      src="https://ptetutorials.com/images/user-profile.png"
-                      alt="sunil"
-                    />{" "}
-                  </div>
-                  <div class="received_msg">
-                    <div class="received_withd_msg">
-                      <p>
-                        We work directly with our designers and suppliers, and
-                        sell direct to you, which means quality, exclusive
-                        products, at a price anyone can afford.
-                      </p>
-                      <span class="time_date"> 11:01 AM | Today</span>
-                    </div>
-                  </div>
-                </div>
+                {this.state.messages.map((message) => {
+                  return (
+                    <span>
+                      <div class="incoming_msg">
+                        <div class="incoming_msg_img">
+                          {" "}
+                          <img
+                            src="https://ptetutorials.com/images/user-profile.png"
+                            alt="sunil"
+                          />{" "}
+                        </div>
+                        <div class="received_msg">
+                          <div class="received_withd_msg">
+                            <p>{message}</p>
+                            {/* <span class="time_date"> 11:01 AM | June 9</span> */}
+                          </div>
+                        </div>
+                      </div>
+                      {/* <div class="outgoing_msg">
+                        <div class="sent_msg">
+                          <p>
+                            Test which is a new approach to have all solutions
+                          </p>
+                          <span class="time_date"> 11:01 AM | June 9</span>{" "}
+                        </div>
+                      </div> */}
+                    </span>
+                  );
+                })}
               </div>
               <div class="type_msg">
                 <div class="input_msg_write">

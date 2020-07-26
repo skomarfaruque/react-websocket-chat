@@ -18,7 +18,7 @@ class Home extends React.Component {
     console.log("logged", this.props.token);
     const { data } = await axios({
       method: "get",
-      url: "http://localhost:5000/users",
+      url: `${process.env.REACT_APP_API_URL}users`,
     });
     this.setState({ users: data.data });
     console.log(this.state);
@@ -27,7 +27,7 @@ class Home extends React.Component {
   login = async () => {
     const { data } = await axios({
       method: "get",
-      url: "http://localhost:5000/users",
+      url: `${process.env.REACT_APP_API_URL}users`,
     });
     this.props.history.push("/home");
     console.log(data);
@@ -48,9 +48,9 @@ class Home extends React.Component {
     this.setState({ password: e.target.value });
     console.log(this.state);
   };
-  alertClicked = (receiver) => {
+  alertClicked = (receiver, name) => {
     console.log(receiver);
-    this.props.history.push(`/chat/${receiver}`);
+    this.props.history.push(`/chat/${receiver}/${name}`);
   };
 
   render() {
@@ -60,7 +60,7 @@ class Home extends React.Component {
           return (
             <ListGroupItem
               {...(this.props.token === user._id ? "disabled" : "")}
-              onClick={() => this.alertClicked(user._id)}
+              onClick={() => this.alertClicked(user._id, user.name)}
               tag="a"
               href="#"
               action
