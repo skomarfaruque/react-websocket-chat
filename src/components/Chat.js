@@ -13,12 +13,14 @@ class Chat extends React.Component {
     this.state = {
       users: [],
       messages: [],
+      message: ''
     };
   }
   componentWillMount() {
     document.title = "Login";
   }
   async componentDidMount() {
+    this.getPreviousMsg()
     this.ws.onopen = (websocket) => {
       // on connecting, do nothing but log it to the console
       console.log("connected");
@@ -30,11 +32,12 @@ class Chat extends React.Component {
         content: "",
       });
       this.ws.send(data);
+
     };
 
     this.ws.onmessage = (evt) => {
       const rawMessages = [...this.state.messages];
-      rawMessages.push(evt.data);
+      rawMessages.push({ content: evt.data });
       this.setState({ messages: rawMessages });
       console.log("received message", evt.data);
     };
@@ -47,18 +50,29 @@ class Chat extends React.Component {
     this.setState({ users: data.data });
     console.log(this.state);
   }
+  getPreviousMsg = async () => {
+    const { data } = await axios({
+      method: "get",
+      url: `http://localhost:5000/chats/${this.props.token.token}/${this.props.match.params.id}`,
+    });
+    this.setState({ messages: data.data });
+  }
   sendMsg = () => {
     console.log(this.ws);
     const sender = this.props.token;
     console.log("ss", sender);
-    const data = JSON.stringify({
+    const data = {
       MessageType: "CHAT",
       sender: this.props.token.token,
       receiver: this.props.match.params.id,
       MessageContentType: "TEXT",
       content: this.state.message,
-    });
-    this.ws.send(data);
+    }
+    this.ws.send(JSON.stringify(data));
+    const rawMessages = [...this.state.messages];
+    rawMessages.push(data);
+    this.setState({ messages: rawMessages });
+    this.setState({ message: '' });
   };
 
   login = async () => {
@@ -269,9 +283,8 @@ class Chat extends React.Component {
                 {this.state.messages.map((message) => {
                   return (
                     <span>
-                      <div className="incoming_msg">
+                      {message.sender !== this.props.token.token ? <div className="incoming_msg">
                         <div className="incoming_msg_img">
-                          {" "}
                           <img
                             src="https://ptetutorials.com/images/user-profile.png"
                             alt="sunil"
@@ -279,19 +292,21 @@ class Chat extends React.Component {
                         </div>
                         <div className="received_msg">
                           <div className="received_withd_msg">
-                            <p>{message}</p>
+                            <p>{message.content}</p>
                             {/* <span className="time_date"> 11:01 AM | June 9</span> */}
                           </div>
                         </div>
-                      </div>
-                      {/* <div className="outgoing_msg">
-                        <div className="sent_msg">
-                          <p>
-                            Test which is a new approach to have all solutions
-                          </p>
-                          <span className="time_date"> 11:01 AM | June 9</span>{" "}
-                        </div>
-                      </div> */}
+                      </div> : <div className="outgoing_msg">
+                          <div className="sent_msg">
+                            <p>
+                              {message.content}
+                            </p>
+                            <span className="time_date"> 11:01 AM | June 9</span>{" "}
+                          </div>
+                        </div>}
+
+
+
                     </span>
                   );
                 })}
@@ -302,7 +317,13 @@ class Chat extends React.Component {
                     type="text"
                     className="write_msg"
                     placeholder="Type a message"
+                    value={this.state.message}
                     onChange={(e) => this.setMsg(e)}
+                    onKeyPress={event => {
+                      if (event.key === 'Enter') {
+                        this.sendMsg()
+                      }
+                    }}
                   />
                   <button
                     className="msg_send_btn"
