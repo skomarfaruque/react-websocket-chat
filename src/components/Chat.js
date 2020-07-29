@@ -45,7 +45,7 @@ class Chat extends React.Component {
     console.log("receiver", this.props.match.params.id);
     const { data } = await axios({
       method: "get",
-      url: "http://localhost:5000/users",
+      url: `${process.env.REACT_APP_API_URL}users`,
     });
     this.setState({ users: data.data });
     console.log(this.state);
@@ -53,7 +53,7 @@ class Chat extends React.Component {
   getPreviousMsg = async () => {
     const { data } = await axios({
       method: "get",
-      url: `http://localhost:5000/chats/${this.props.token.token}/${this.props.match.params.id}`,
+      url: `${process.env.REACT_APP_API_URL}chats/${this.props.token.token}/${this.props.match.params.id}`,
     });
     this.setState({ messages: data.data });
   }
