@@ -6,7 +6,7 @@
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.5",
     "@fortawesome/react-fontawesome": "^0.0.18",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "bulma": "^0.6.2",
     "enzyme": "^3.3.0",
